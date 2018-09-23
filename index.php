@@ -10,6 +10,9 @@
 	<script src="./jquery.validate.min.js"> </script>
 	<script src="./validate.js"></script>
 	<script src="./jquery-ui.min.js"></script>
+	<style type="text/css">
+	.error{color:red;}
+</style>
 </head>
 <body>
 
@@ -45,11 +48,12 @@
 	$(function(){
 		$('#formid').validate({
 			rules:{
-				email:{required:true},
+				email:{required:true,Email1:true},
 				pwd:{required:true}
 			},
 			messages:{
-
+				email:{required:"Email Required"},
+				pwd:{required:"Password Required"}
 			}
 		})
 
