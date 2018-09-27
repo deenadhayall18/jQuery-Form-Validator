@@ -49,7 +49,7 @@
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="date">Date</label>
 					<div class="col-sm-6">          
-						<input type="date" class="form-control" id="date" placeholder="Enter password" name="date">
+						<input type="date" class="form-control" id="date" placeholder="Enter password" name="date"  data-date="" data-date-format="DD MMMM YYYY">
 					</div>
 				</div>
 				<div class="form-group">
@@ -58,37 +58,31 @@
 						<input type="time" class="form-control" id="time" placeholder="Enter password" name="time">
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-2" for="col">Colors</label>
-					<div class="col-sm-6">          
-						<input type="color" class="form-control" id="col" placeholder="Enter password" name="col">
-					</div>
-				</div>
 
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="range">Range</label>
+					<label class="control-label col-sm-2" for="radio">Radio</label>
 					<div class="col-sm-6">          
-						<input type="range" class="form-control" id="range" placeholder="Enter password" name="range">
+						Select  <input type="radio"  name="gender" value="male"> 
+
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="radio">Radio</label>
 					<div class="col-sm-6">          
-						<input type="radio"  name="gender" value="male" checked> Male
-						<input type="radio" name="gender" value="female"> Female
-						<input type="radio" name="gender" value="other"> Other
+						<input type="file" name="file" class="form-control">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="sel">Select box</label>
 					<div class="col-sm-6">          
 						<select class="form-control" name="sel">
-							<option value=" ">Select </option>
+							<option value="">Select</option>
 							<option value="hai">Hai</option>
 							<option value="bye">Bye</option>
 						</select>
 					</div>
 				</div>
+
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="pwd">Check box</label>
 					<div class="col-sm-6">   
@@ -101,9 +95,10 @@
 						<input type="url" name="url" class="form-control">
 					</div>
 				</div>
-				<div class="form-group">        
-					<div class="col-sm-offset-3 col-sm-6 text-center">
-						<button type="submit" class="btn btn-success btn-md">Submit</button>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="pwd"></label>
+					<div class="col-sm-6">   
+						<input type="submit" name="url" class="form-control btn btn-success">
 					</div>
 				</div>
 			</form>
@@ -120,22 +115,31 @@
 		$('#formid').validate({
 			rules:{
 				email:{required:true,email1:true,minlength:4},
-				pwd:{required:true},
-				nos:{required:true},
-				textname:{required:true},
+				pwd:{required:true,minlength:8,maxlength:8},
+				nos:{required:true,numbersOnly:true,maxValue:100},
+				textname:{required:true,letterspaceonly:true},
 				date:{required:true},
 				time:{required:true},
-				file:{required:true},
 				sel:{required:true},
-				col:{required:true},
-				pwd:{required:true},
 				gender:{required:true},
+				file:{required:true,minfilesize:100,maxfilesize:1024},
 				check:{required:true},
 				url:{required:true},
 			},
 			messages:{
 				email:{required:"Email Required"},
-				pwd:{required:"Password Required"}
+				pwd:{required:"Password Required"},
+				email:{required:'Enter Email',email1:'Enter Valid Email'},
+				pwd:{required:'Enter Password',minlength:'Exact of 8 characters required',maxlength:'Exact of 8 characters required'},
+				nos:{required:'Enter number',numbersOnly:'Numnbers Only Allowed',maxValue:'Maximum value of 100 only allowed'},
+				textname:{required:'Enter Text',letterspaceonly:'Only Letters alllowed'},
+				date:{required:'Enter Date ',minDate:'Minimum date is 01-01-2018',maxDate:'Maximum Date is 01-01-2019'},
+				time:{required:'Enter Time'},
+				sel:{required:'Select It'},
+				gender:{required:'Click It'},
+				file:{required:'Enter a File ',minfilesize:'Minimum file size of 100kb allowed',maxfilesize:'Maximum file size of 1024kb allowed'},
+				check:{required:'Check It '},
+				url:{required:'Enter a Valid Url'},
 			}
 		})
 
